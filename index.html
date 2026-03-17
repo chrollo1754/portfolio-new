@@ -639,7 +639,7 @@
       </div>
     </div>
     <div class="reveal reveal-delay-2">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+      <form class="contact-form" action="https://formspree.io/f/mkoqpnro" method="POST">
         <div class="form-row">
           <div class="form-group"><label>Your Name</label><input type="text" placeholder="Rahul Sharma" required /></div>
           <div class="form-group"><label>Your Email</label><input type="email" placeholder="rahul@example.com" required /></div>
@@ -657,6 +657,9 @@
           <span>Send Message</span>
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M8 3l5 5-5 5"/></svg>
         </button>
+        <!-- Formspree redirect back to site after submit -->
+        <input type="hidden" name="_next" value="https://chrollo1754.github.io/#contact" />
+        <input type="hidden" name="_subject" value="New Project Enquiry — Chrollo.Studio" />
       </form>
     </div>
   </div>
