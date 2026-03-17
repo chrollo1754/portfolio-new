@@ -120,19 +120,20 @@
   .view-all-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
   .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .work-card { position: relative; overflow: hidden; background: var(--bg3); cursor: pointer; }
-  .work-card.featured { grid-row: span 2; }
   .work-img-placeholder { width: 100%; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; transition: transform 0.6s ease, filter 0.6s ease; filter: brightness(0.88); position: relative; overflow: hidden; }
-  .work-card.featured .work-img-placeholder { aspect-ratio: unset; min-height: 520px; }
   .work-card:hover .work-img-placeholder { filter: brightness(0.4); transform: scale(1.03); }
   .proj-jewellery { background: linear-gradient(135deg, #1a1209 0%, #2d1f0a 40%, #1a0f06 100%); }
   .proj-jewellery-inner { width: 180px; height: 180px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; position: relative; }
   .proj-jewellery-inner::before { content: ''; position: absolute; inset: 8px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.15); }
   .proj-jewellery-inner svg { color: var(--gold); opacity: 0.6; }
   .proj-fitness { background: linear-gradient(135deg, #080d12 0%, #0d1a10 50%, #080d08 100%); }
+  .proj-fitness-inner { display: flex; align-items: center; justify-content: center; }
   .proj-fitness-inner svg { color: #4CAF50; opacity: 0.5; }
   .proj-restaurant { background: linear-gradient(135deg, #0d0808 0%, #1a0d0a 50%, #0d0606 100%); }
+  .proj-restaurant-inner { display: flex; align-items: center; justify-content: center; }
   .proj-restaurant-inner svg { color: #e07050; opacity: 0.5; }
   .proj-portfolio-card { background: linear-gradient(135deg, #090910 0%, #100a1a 50%, #080810 100%); }
+  .proj-portfolio-inner { display: flex; align-items: center; justify-content: center; }
   .proj-portfolio-inner svg { color: #8060d0; opacity: 0.5; }
   .proj-jewellers { background: linear-gradient(135deg, #0d0a04 0%, #221800 50%, #0d0a04 100%); }
   .proj-jewellers-inner { width: 160px; height: 160px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.25); display: flex; align-items: center; justify-content: center; position: relative; }
@@ -288,9 +289,9 @@
     .services-header { grid-template-columns: 1fr; gap: 16px; }
     .services-grid { grid-template-columns: 1fr; }
     .work-grid { grid-template-columns: 1fr; }
-    .work-card.featured { grid-row: span 1; }
-    .work-card.featured .work-img-placeholder { min-height: 260px; }
     .work-img-placeholder { aspect-ratio: 16/10; }
+    .work-card[style*="grid-column"] { grid-column: 1 !important; }
+    .work-card[style*="grid-column"] .work-img-placeholder { aspect-ratio: 16/10 !important; }
     .about-inner { grid-template-columns: 1fr; gap: 40px; }
     .about-visual { height: 280px; }
     .about-img-monogram { font-size: 72px; }
@@ -446,10 +447,12 @@
     <a href="#contact" class="view-all-link">Start Your Project →</a>
   </div>
   <div class="work-grid">
-    <!-- Bharat Jewellery - FEATURED -->
-    <div class="work-card featured reveal" onclick="openProject('bharat')">
+    <!-- Bharat Jewellery -->
+    <div class="work-card reveal" onclick="openProject('bharat')">
       <div class="work-img-placeholder proj-jewellery">
-        <div class="proj-jewellery-inner"><svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="0.9"><path d="M32 8l8 16h14l-11 10 4 16-15-9-15 9 4-16L10 24h14z"/><circle cx="32" cy="32" r="18" stroke-dasharray="4 4"/></svg></div>
+        <div class="proj-jewellery-inner">
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="0.9"><path d="M32 8l8 16h14l-11 10 4 16-15-9-15 9 4-16L10 24h14z"/><circle cx="32" cy="32" r="18" stroke-dasharray="4 4"/></svg>
+        </div>
       </div>
       <div class="work-overlay">
         <div class="work-tag">Jewellery · E-Commerce</div>
@@ -462,7 +465,9 @@
     <!-- NS Fitzone -->
     <div class="work-card reveal reveal-delay-1" onclick="openProject('fitzone')">
       <div class="work-img-placeholder proj-fitness">
-        <div class="proj-fitness-inner"><svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><path d="M10 30h6l4-12 8 24 6-18 4 6h12"/><circle cx="30" cy="30" r="20" stroke-dasharray="3 3"/></svg></div>
+        <div class="proj-fitness-inner">
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><path d="M10 30h6l4-12 8 24 6-18 4 6h12"/><circle cx="30" cy="30" r="20" stroke-dasharray="3 3"/></svg>
+        </div>
       </div>
       <div class="work-overlay">
         <div class="work-tag">Fitness · Landing Page</div>
@@ -475,7 +480,9 @@
     <!-- Rajwant Jewellers -->
     <div class="work-card reveal reveal-delay-2" onclick="openProject('rajwant')">
       <div class="work-img-placeholder proj-jewellers">
-        <div class="proj-jewellers-inner"><svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><polygon points="30,6 36,22 54,22 40,32 46,48 30,38 14,48 20,32 6,22 24,22"/><circle cx="30" cy="30" r="16" stroke-dasharray="3 3"/></svg></div>
+        <div class="proj-jewellers-inner">
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><polygon points="30,6 36,22 54,22 40,32 46,48 30,38 14,48 20,32 6,22 24,22"/><circle cx="30" cy="30" r="16" stroke-dasharray="3 3"/></svg>
+        </div>
       </div>
       <div class="work-overlay">
         <div class="work-tag">Jewellery · Business Website</div>
@@ -488,7 +495,9 @@
     <!-- Sai Krupa Restaurant -->
     <div class="work-card reveal reveal-delay-3" onclick="openProject('saikrupa')">
       <div class="work-img-placeholder proj-restaurant">
-        <div class="proj-restaurant-inner"><svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><path d="M20 10v20c0 6 4 10 10 10s10-4 10-10V10"/><path d="M30 40v10M20 50h20"/><circle cx="30" cy="24" r="10" stroke-dasharray="3 3"/></svg></div>
+        <div class="proj-restaurant-inner">
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><path d="M20 10v20c0 6 4 10 10 10s10-4 10-10V10"/><path d="M30 40v10M20 50h20"/><circle cx="30" cy="24" r="10" stroke-dasharray="3 3"/></svg>
+        </div>
       </div>
       <div class="work-overlay">
         <div class="work-tag">Restaurant · Hospitality</div>
@@ -499,9 +508,11 @@
       <div class="work-info"><div class="work-info-title">Sai Krupa Restaurant</div><div class="work-info-tag">Click to explore →</div></div>
     </div>
     <!-- Studio Noor Digital -->
-    <div class="work-card reveal reveal-delay-4" onclick="openProject('studionoor')" style="grid-column: 1 / -1;">
-      <div class="work-img-placeholder proj-portfolio-card" style="aspect-ratio: 16/6; min-height: unset;">
-        <div class="proj-portfolio-inner"><svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><rect x="10" y="14" width="40" height="30" rx="2"/><path d="M10 22h40"/><rect x="16" y="28" width="12" height="10" rx="1"/><path d="M34 30h10M34 36h8"/></svg></div>
+    <div class="work-card reveal reveal-delay-4" style="grid-column: 1 / -1;" onclick="openProject('studionoor')">
+      <div class="work-img-placeholder proj-portfolio-card" style="aspect-ratio: 21/9;">
+        <div class="proj-portfolio-inner">
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="0.9"><rect x="10" y="14" width="40" height="30" rx="2"/><path d="M10 22h40"/><rect x="16" y="28" width="12" height="10" rx="1"/><path d="M34 30h10M34 36h8"/></svg>
+        </div>
       </div>
       <div class="work-overlay">
         <div class="work-tag">Creative · Portfolio</div>
@@ -614,7 +625,7 @@
       <div class="contact-details">
         <div class="contact-detail-item">
           <div class="detail-icon"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 3h12v12H3z"/><path d="M3 6l6 4 6-4"/></svg></div>
-          yashrajchavan5143@gmail.com
+          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aad3cbd9c2d8cbc0c9c2cbdccbc49f9b9e99eacdc7cbc3c684c9c5c7">[email&#160;protected]</a>
         </div>
         <div class="contact-detail-item">
           <div class="detail-icon"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 2C6.2 2 4 4.2 4 7c0 4.5 5 9 5 9s5-4.5 5-9c0-2.8-2.2-5-5-5z"/><circle cx="9" cy="7" r="1.5"/></svg></div>
@@ -672,7 +683,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ===== PROJECT DATA ===== */
 const projects = {
   bharat: {
@@ -855,13 +866,4 @@ function handleSubmit(e) {
 if (window.matchMedia('(pointer: fine)').matches) {
   window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
-    const h = document.querySelector('.hero-content');
-    if (h && scrolled < window.innerHeight) {
-      h.style.transform = `translateY(${scrolled * 0.13}px)`;
-      h.style.opacity = 1 - scrolled / (window.innerHeight * 0.85);
-    }
-  });
-}
-</script>
-</body>
-</html>
+    const h = document.querySelec
