@@ -62,14 +62,14 @@
   .hero-bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
   .hero-bg-glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
   .hero-content { position: relative; z-index: 2; max-width: 900px; }
-  .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s 0.2s forwards; }
+  .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; animation: fadeUp 0.8s 0.2s both; }
   .hero-eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
   .hero-eyebrow span { font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
-  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(58px, 7.5vw, 106px); font-weight: 500; line-height: 0.94; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.9s 0.4s forwards; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(58px, 7.5vw, 106px); font-weight: 500; line-height: 0.94; letter-spacing: -0.02em; color: var(--cream); margin-bottom: 32px; animation: fadeUp 0.9s 0.4s both; }
   .hero-title em { font-style: italic; color: var(--gold); }
   .hero-title .outline-text { -webkit-text-stroke: 1.5px rgba(245,240,232,0.28); color: transparent; }
-  .hero-sub { font-size: 17px; font-weight: 400; line-height: 1.75; color: var(--cream-dim); max-width: 500px; margin-bottom: 52px; opacity: 0; animation: fadeUp 0.9s 0.6s forwards; }
-  .hero-actions { display: flex; gap: 24px; align-items: center; opacity: 0; animation: fadeUp 0.9s 0.8s forwards; flex-wrap: wrap; }
+  .hero-sub { font-size: 17px; font-weight: 400; line-height: 1.75; color: var(--cream-dim); max-width: 500px; margin-bottom: 52px; animation: fadeUp 0.9s 0.6s both; }
+  .hero-actions { display: flex; gap: 24px; align-items: center; animation: fadeUp 0.9s 0.8s both; flex-wrap: wrap; }
   .btn-primary { display: inline-flex; align-items: center; gap: 12px; background: var(--gold); color: var(--bg); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; padding: 16px 34px; text-decoration: none; position: relative; overflow: hidden; transition: transform 0.3s; }
   .btn-primary::before { content: ''; position: absolute; inset: 0; background: var(--gold-light); transform: translateX(-100%); transition: transform 0.4s; }
   .btn-primary:hover::before { transform: translateX(0); }
@@ -77,11 +77,11 @@
   .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
   .btn-ghost { display: inline-flex; align-items: center; gap: 10px; color: var(--cream-dim); font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: color 0.3s, border-color 0.3s; }
   .btn-ghost:hover { color: var(--cream); border-color: var(--gold); }
-  .hero-stats { position: absolute; right: 60px; bottom: 80px; display: flex; gap: 48px; opacity: 0; animation: fadeIn 1s 1.2s forwards; }
+  .hero-stats { position: absolute; right: 60px; bottom: 80px; display: flex; gap: 48px; animation: fadeIn 1s 1.2s both; }
   .stat-item { text-align: right; }
   .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; color: var(--gold); line-height: 1; display: block; }
   .stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted); display: block; margin-top: 6px; }
-  .hero-scroll { position: absolute; bottom: 36px; left: 60px; display: flex; align-items: center; gap: 16px; opacity: 0; animation: fadeIn 1s 1.4s forwards; }
+  .hero-scroll { position: absolute; bottom: 36px; left: 60px; display: flex; align-items: center; gap: 16px; animation: fadeIn 1s 1.4s both; }
   .scroll-line { width: 60px; height: 1px; background: var(--gold-dim); position: relative; overflow: hidden; }
   .scroll-line::after { content: ''; position: absolute; inset: 0; background: var(--gold); transform: translateX(-100%); animation: scrollSlide 2s 2s infinite; }
   .hero-scroll span { font-size: 11px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted); }
@@ -264,8 +264,9 @@
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
   @keyframes scrollSlide { 0%{transform:translateX(-100%)} 50%{transform:translateX(100%)} 100%{transform:translateX(100%)} }
-  .reveal { opacity:0; transform:translateY(36px); transition:opacity 0.7s ease,transform 0.7s ease; }
-  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal { opacity:1; transform:translateY(0); transition:opacity 0.7s ease,transform 0.7s ease; }
+  .reveal.animate { opacity:0; transform:translateY(36px); }
+  .reveal.animate.visible { opacity:1 !important; transform:translateY(0) !important; }
   .reveal-delay-1{transition-delay:.1s} .reveal-delay-2{transition-delay:.2s}
   .reveal-delay-3{transition-delay:.3s} .reveal-delay-4{transition-delay:.4s}
   .reveal-delay-5{transition-delay:.5s}
@@ -843,10 +844,27 @@ function closeMobileNav() {
 }
 
 /* ===== SCROLL REVEAL ===== */
+const revealEls = document.querySelectorAll('.reveal');
+
+// Only animate if JS is working — add animate class first
+revealEls.forEach(el => {
+  const rect = el.getBoundingClientRect();
+  // Don't hide elements already in view on load
+  if (rect.top > window.innerHeight) {
+    el.classList.add('animate');
+  }
+});
+
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
 
 /* ===== FORM ===== */
 function handleSubmit(e) {
@@ -862,8 +880,7 @@ function handleSubmit(e) {
   }, 3500);
 }
 
-/* ===== HERO PARALLAX (desktop only) ===== */
-if (window.matchMedia('(pointer: fine)').matches) {
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const h = document.querySelec
+/* ===== HERO PARALLAX DISABLED - prevents opacity bugs ===== */
+</script>
+</body>
+</html>
