@@ -626,7 +626,7 @@
       <div class="contact-details">
         <div class="contact-detail-item">
           <div class="detail-icon"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 3h12v12H3z"/><path d="M3 6l6 4 6-4"/></svg></div>
-          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aad3cbd9c2d8cbc0c9c2cbdccbc49f9b9e99eacdc7cbc3c684c9c5c7">[email&#160;protected]</a>
+          <span id="emailDisplay"></span>
         </div>
         <div class="contact-detail-item">
           <div class="detail-icon"><svg width="17" height="17" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 2C6.2 2 4 4.2 4 7c0 4.5 5 9 5 9s5-4.5 5-9c0-2.8-2.2-5-5-5z"/><circle cx="9" cy="7" r="1.5"/></svg></div>
@@ -684,7 +684,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ===== PROJECT DATA ===== */
 const projects = {
   bharat: {
@@ -878,6 +878,14 @@ function handleSubmit(e) {
     btn.style.background = '';
     btn.disabled = false;
   }, 3500);
+}
+
+/* ===== EMAIL (split to avoid bot/CF scraping) ===== */
+const u = 'yashrajchavan5143';
+const d = 'gmail.com';
+const el = document.getElementById('emailDisplay');
+if (el) {
+  el.innerHTML = '<a href="mailto:' + u + '@' + d + '" style="color:var(--cream-dim);text-decoration:none;">' + u + '@' + d + '</a>';
 }
 
 /* ===== HERO PARALLAX DISABLED - prevents opacity bugs ===== */
